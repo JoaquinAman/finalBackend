@@ -1,13 +1,13 @@
-﻿using BakeryFinal.Model.DTO;
+﻿using BakeryFinal.Model.Domain;
+using BakeryFinal.Model.DTO;
 
 namespace BakeryFinal.Service.Interface
 {
     public interface IBakeryOffice
     {
         BakeryOfficeDTO Save(BakeryOfficeDTO bakeryOfficeDTO);
-        BakeryOfficeDTO Update(int id, BakeryOfficeDTO bakeryOfficeDTO);
-        BakeryOfficeDTO GetById(int id);
-        List<BakeryOfficeDTO> GetAll();
+        BakeryOffice GetById(int id);
+        List<BakeryOffice> GetAll();
         void Delete(int id);
     }
 }

@@ -1,5 +1,7 @@
-﻿using BakeryFinal.Model.DTO;
+﻿using BakeryFinal.Model.Domain;
+using BakeryFinal.Model.DTO;
 using BakeryFinal.Repository.OrderRepository;
+using BakeryFinal.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BakeryFinal.Controllers
@@ -8,16 +10,34 @@ namespace BakeryFinal.Controllers
     [Route("order")]
     public class OrderController : ControllerBase
     {
-        private readonly IOrderRepository _crudRepository;
-        public OrderController(IOrderRepository crudRepository)
+
+        private readonly IOrder _order;
+        public OrderController(IOrder order)
         {
-            _crudRepository = crudRepository;
+            _order = order;
         }
         [HttpPost]
         public IActionResult SaveOrder(OrderDTO addOrder)
         {
-            var order = _crudRepository.Save(addOrder);
+            var order = _order.Save(addOrder);
             return Ok(order);
+        }
+        [HttpGet]
+        [Route("id")]
+        public Order GetOrderById(int id)
+        {
+            return _order.GetById(id);
+
+        }
+        [HttpGet]
+        public List<Order> GetAll()
+        {
+            return _order.GetAll();
+        }
+        [HttpDelete]
+        public void DeleteById(int id)
+        {
+            _order.Delete(id);
         }
     }
 }

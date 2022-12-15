@@ -30,7 +30,11 @@ namespace BakeryFinal.Repository.BakeryOfficeRepository
 
         public BakeryOfficeDTO Save(BakeryOfficeDTO data)
         {
-            _context.Add(data);
+            var bakery = new BakeryOffice()
+            {
+                Name = data.Name,
+            };
+            _context.Add(bakery);
             _context.SaveChanges();
             return data;
         }

@@ -30,7 +30,12 @@ namespace BakeryFinal.Repository.BreadRepository
 
         public BreadDTO Save(BreadDTO data)
         {
-            _context.Add(data);
+            var bread = new Bread()
+            {
+                Name = data.Name,
+                Price = data.Price,
+            };
+            _context.Add(bread);
             _context.SaveChanges();
             return data;
         }

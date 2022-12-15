@@ -1,4 +1,5 @@
-﻿using BakeryFinal.Model.DTO;
+﻿using BakeryFinal.Model.Domain;
+using BakeryFinal.Model.DTO;
 using BakeryFinal.Repository.BreadOrderRepository;
 using BakeryFinal.Repository.OrderRepository;
 using BakeryFinal.Service.Interface;
@@ -15,27 +16,17 @@ namespace BakeryFinal.Service.Implementation
         }
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _breadOrderRepository.Delete(id);
         }
 
-        public List<BreadOrderDTO> GetAll()
+        public List<BreadOrder> GetAll()
         {
-            throw new NotImplementedException();
+            return _breadOrderRepository.GetAll();
         }
 
-        public BreadOrderDTO GetById(int id)
+        public BreadOrder GetById(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public BreadOrderDTO Save(BreadOrderDTO breadOrderDTO)
-        {
-            throw new NotImplementedException();
-        }
-
-        public BreadOrderDTO Update(int id, BreadOrderDTO breadOrderDTO)
-        {
-            throw new NotImplementedException();
+            return _breadOrderRepository.GetById(id);
         }
     }
 }
