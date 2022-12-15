@@ -1,6 +1,11 @@
 using BakeryFinal.Data;
 using BakeryFinal.Model.Domain;
+using BakeryFinal.Repository.BakeryOfficeRepository;
+using BakeryFinal.Repository.BreadOrderRepository;
+using BakeryFinal.Repository.BreadRepository;
 using BakeryFinal.Repository.OrderRepository;
+using BakeryFinal.Service.Implementation;
+using BakeryFinal.Service.Interface;
 using Microsoft.EntityFrameworkCore;
 
 namespace BakeryFinal
@@ -14,6 +19,16 @@ namespace BakeryFinal
             // Add services to the container.
 
             builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+            builder.Services.AddTransient<IOrder, OrderService>();
+
+            builder.Services.AddTransient<IBreadOrderRepository, BreadOrderRepository>();
+            builder.Services.AddTransient<IBreadOrder, BreadOrderService>();
+
+            builder.Services.AddTransient<IBakeryOfficeRepository, BakeryOfficeRepository>();
+            builder.Services.AddTransient<IBakeryOffice, BakeryOfficeService>();
+
+            builder.Services.AddTransient<IBreadRepository, BreadRepository>();
+            builder.Services.AddTransient<IBread, BreadService>();
 
             builder.Services.AddDbContext<ApplicationDBContext>(options =>
             {

@@ -1,15 +1,33 @@
 ﻿using BakeryFinal.Data;
 using BakeryFinal.Model.Domain;
 using BakeryFinal.Model.DTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace BakeryFinal.Repository.OrderRepository
 {
     public class OrderRepository : IOrderRepository
     {
-        private readonly ApplicationDBContext _dBContext;
-        public OrderRepository(ApplicationDBContext dBContext)
+        private readonly ApplicationDBContext _context;
+        public OrderRepository(ApplicationDBContext context)
         {
-            _dBContext = dBContext;
+            _context = context;
+        }
+
+        public void Delete(int id)
+        {
+            var itemToRemove = _context.Order.SingleOrDefault(x => x.Id == id);
+            _context.Order.Remove(itemToRemove);
+            _context.SaveChanges();
+        }
+
+        public List<Order> GetAll()
+        {
+            return _context.Order.ToList();
+        }
+
+        public Order GetById(int id)
+        {
+            return _context.Order.SingleOrDefault(x => x.Id == id);
         }
 
         public OrderDTO Save(OrderDTO data)
@@ -21,11 +39,13 @@ namespace BakeryFinal.Repository.OrderRepository
                 TotalPrice = data.TotalPrice,
             };
 
-            _dBContext.Order.Add(order);
-            _dBContext.SaveChanges();
+            _context.Order.Add(order);
+            _context.SaveChanges();
             SaveBreadOrder(order.Id, data.BreadOrder);
             return data;
         }
+
+     
 
         private void SaveBreadOrder(int orderDbId, IEnumerable<BreadOrderDTO> orderDto)
         {
@@ -37,8 +57,8 @@ namespace BakeryFinal.Repository.OrderRepository
                     IdBread = breadOrder.IdBread,
                     Quantity = breadOrder.Quantity
                 };
-                _dBContext.BreadOrder.Add(breadOrderDb);
-                _dBContext.SaveChanges();
+                _context.BreadOrder.Add(breadOrderDb);
+                _context.SaveChanges();
             }
         }
     }

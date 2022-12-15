@@ -1,9 +1,12 @@
-﻿using BakeryFinal.Model.DTO;
+﻿using BakeryFinal.Model.Domain;
+using BakeryFinal.Model.DTO;
 
 namespace BakeryFinal.Repository.BreadOrderRepository
 {
     public interface IBreadOrderRepository
     {
-        BreadOrderDTO Save(BreadOrderDTO data);
+        BreadOrder GetById(int id);
+        List<BreadOrder> GetAll();
+        void Delete(int id);
     }
 }
