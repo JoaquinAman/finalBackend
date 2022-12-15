@@ -8,7 +8,7 @@ namespace BakeryFinal.Model.Domain
         [Required]
         public int Id { get; set; }
         [Required]
-        public int TotalPrice { get; set; }
+        public float TotalPrice { get; set; }
         [Required]
         public int BakeryOfficeId { get; set; }
         public virtual ICollection<BreadOrder> BreadOrder { get; set; } = null!;
