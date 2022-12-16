@@ -1,0 +1,15 @@
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\bin\Debug\net6.0\BaskeryFinal.Front.exe
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\bin\Debug\net6.0\BaskeryFinal.Front.deps.json
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\bin\Debug\net6.0\BaskeryFinal.Front.runtimeconfig.json
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\bin\Debug\net6.0\BaskeryFinal.Front.dll
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\bin\Debug\net6.0\BaskeryFinal.Front.pdb
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\obj\Debug\net6.0\BaskeryFinal.Front.csproj.AssemblyReference.cache
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\obj\Debug\net6.0\BaskeryFinal.Front.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\obj\Debug\net6.0\BaskeryFinal.Front.AssemblyInfoInputs.cache
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\obj\Debug\net6.0\BaskeryFinal.Front.AssemblyInfo.cs
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\obj\Debug\net6.0\BaskeryFinal.Front.csproj.CoreCompileInputs.cache
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\obj\Debug\net6.0\BaskeryFinal.Front.dll
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\obj\Debug\net6.0\refint\BaskeryFinal.Front.dll
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\obj\Debug\net6.0\BaskeryFinal.Front.pdb
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\obj\Debug\net6.0\BaskeryFinal.Front.genruntimeconfig.cache
+C:\Users\Joaqu\source\repos\BakeryFinal\BaskeryFinal.Front\obj\Debug\net6.0\ref\BaskeryFinal.Front.dll

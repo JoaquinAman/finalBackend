@@ -15,11 +15,6 @@ namespace BakeryFinal.Controllers
             _bakeryOffice = bakeryOffice;
         }
 
-        //BakeryOfficeDTO Save(BakeryOfficeDTO bakeryOfficeDTO);
-        //BakeryOffice GetById(int id);
-        //List<BakeryOffice> GetAll();
-        //void Delete(int id);
-
         [HttpPost]
         public IActionResult SaveBakeryOffice(BakeryOfficeDTO addBakeryOffice)
         {
