@@ -1,4 +1,5 @@
 ﻿using BakeryFinal.Data;
+using BakeryFinal.Exceptions;
 using BakeryFinal.Model.Domain;
 using BakeryFinal.Model.DTO;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,13 @@ namespace BakeryFinal.Repository.OrderRepository
 
         public List<Order> PrepareAllOrdersByBakeryOffice(int bakeryOfficeId)
         {
-            return _context.Order.Where(x => x.BakeryOfficeId == bakeryOfficeId).ToList();
+            List<Order> orders = _context.Order.Where(x => x.BakeryOfficeId == bakeryOfficeId).ToList();
+            foreach(var order in orders)
+            {
+                order.Status = "done";
+            }
+            _context.SaveChanges();
+            return orders;
         }
 
         public List<Order> GetAll()
@@ -35,8 +42,33 @@ namespace BakeryFinal.Repository.OrderRepository
             return _context.Order.SingleOrDefault(x => x.Id == id);
         }
 
+        public int GetTotalQuantityInOrder(OrderDTO data)
+        {
+            var breadOrderCollection = data.BreadOrder;
+            int totalQuantity = 0;
+            foreach(var breadOrder in breadOrderCollection)
+            {
+                totalQuantity += breadOrder.Quantity;
+            }
+            return totalQuantity;
+        }
+
         public OrderDTO Save(OrderDTO data)
         {
+            var currentBakeryOffice = _context.BakeryOffice.SingleOrDefault(x => x.Id == data.BakeryOfficeId);
+            var currentBreadTotal = currentBakeryOffice.Accumulated;
+            var newQuantityDesired = GetTotalQuantityInOrder(data);
+            if (currentBakeryOffice.MaxCapacity < (currentBreadTotal + newQuantityDesired))
+            {
+                //throw new BakeryOfficeMaxOutCapacityException();
+                var surplus = -1*(currentBakeryOffice.MaxCapacity - currentBreadTotal + newQuantityDesired);
+                return new OrderDTO()
+                {
+                    Status = "Can not create order because an surplus in in desired quantity of: " + surplus + ".", 
+                };
+            }
+
+
             var order = new Order()
             {
                 BakeryOfficeId = data.BakeryOfficeId,
@@ -46,13 +78,14 @@ namespace BakeryFinal.Repository.OrderRepository
 
             _context.Order.Add(order);
             _context.SaveChanges();
-            SaveBreadOrder(order.Id, data.BreadOrder);
+            SaveBreadOrder(data.BakeryOfficeId, order.Id, data.BreadOrder);
             return data;
         }
 
 
-        private void SaveBreadOrder(int orderDbId, IEnumerable<BreadOrderDTO> orderDto)
+        private void SaveBreadOrder(int bakeryOfficeId, int orderDbId, IEnumerable<BreadOrderDTO> orderDto)
         {
+            int accumulator = 0;
             foreach (var breadOrder in orderDto)
             {
                 var breadOrderDb = new BreadOrder()
@@ -60,10 +93,15 @@ namespace BakeryFinal.Repository.OrderRepository
                     IdOrder = orderDbId,
                     IdBread = breadOrder.IdBread,
                     Quantity = breadOrder.Quantity
+
                 };
+                accumulator += breadOrder.Quantity;
                 _context.BreadOrder.Add(breadOrderDb);
                 _context.SaveChanges();
             }
+
+            var currentBakeryOffice = _context.BakeryOffice.SingleOrDefault(x => x.Id == bakeryOfficeId);
+            currentBakeryOffice.Accumulated = accumulator;
         }
     }
 }

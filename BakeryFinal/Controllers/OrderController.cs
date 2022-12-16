@@ -26,10 +26,11 @@ namespace BakeryFinal.Controllers
         [Route("id")]
         public Order GetOrderById(int id)
         {
+            
             return _order.GetById(id);
 
         }
-        [HttpGet]
+        [HttpPut]
         [Route("orders/bakeryId")]
         public List<Order> GetOrdersByBakeryId(int bakeryId)
         {

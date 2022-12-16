@@ -53,6 +53,7 @@ namespace BakeryFinal
 
             app.UseAuthorization();
 
+            app.UseExceptionHandler("/error");
 
             app.MapControllers();
 

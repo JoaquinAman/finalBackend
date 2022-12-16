@@ -7,10 +7,10 @@ namespace BakeryFinal.Controllers
 {
     [ApiController]
     [Route("bakeryOffice")]
-    public class BaskeryOfficeController : ControllerBase
+    public class BakeryOfficeController : ControllerBase
     {
         private readonly IBakeryOffice _bakeryOffice;
-        public BaskeryOfficeController(IBakeryOffice bakeryOffice)
+        public BakeryOfficeController(IBakeryOffice bakeryOffice)
         {
             _bakeryOffice = bakeryOffice;
         }

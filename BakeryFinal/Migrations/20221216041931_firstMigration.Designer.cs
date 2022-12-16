@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakeryFinal.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20221216033307_firstMigration")]
+    [Migration("20221216041931_firstMigration")]
     partial class firstMigration
     {
         /// <inheritdoc />
@@ -32,6 +32,9 @@ namespace BakeryFinal.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Accumulated")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
