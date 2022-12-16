@@ -33,6 +33,7 @@ namespace BakeryFinal.Repository.BakeryOfficeRepository
             var bakery = new BakeryOffice()
             {
                 Name = data.Name,
+                MaxCapacity = data.Capacity
             };
             _context.Add(bakery);
             _context.SaveChanges();

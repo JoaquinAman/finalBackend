@@ -11,6 +11,17 @@ namespace BakeryFinal.Repository.BreadRepository
         {
             _context = context;
         }
+
+        public List<Bread> GetAllBreadsByBakeryOffice(int id)
+        {
+            var bakeryOffice = _context.Bread.Where(x => x.Bakery.Id == id).ToList();
+            List<Bread> breads = new List<Bread>();
+            foreach(var bread in bakeryOffice)
+            {
+                breads.Add(bread);
+            }
+            return breads;
+        }
         public void Delete(int id)
         {
             var itemToRemove = _context.Bread.SingleOrDefault(x => x.Id == id);

@@ -9,5 +9,6 @@ namespace BakeryFinal.Service.Interface
         Bread GetById(int id);
         List<Bread> GetAll();
         void Delete(int id);
+        List<Bread> GetAllBreadsByBakeryOffice(int id);
     }
 }

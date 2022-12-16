@@ -24,6 +24,11 @@ namespace BakeryFinal.Service.Implementation
             return _breadRepository.GetAll();
         }
 
+        public List<Bread> GetAllBreadsByBakeryOffice(int id)
+        {
+            return _breadRepository.GetAllBreadsByBakeryOffice(id);
+        }
+
         public Bread GetById(int id)
         {
             return _breadRepository.GetById(id);

@@ -28,6 +28,14 @@ namespace BakeryFinal.Controllers
             return _bread.GetById(id);
 
         }
+
+        [HttpGet]
+        [Route("/menu/bakeryid")]
+        public List<Bread> GetAllBreadsByBakeryOffice(int id)
+        {
+            return _bread.GetAllBreadsByBakeryOffice(id);
+
+        }
         [HttpGet]
         public List<Bread> GetAll()
         {

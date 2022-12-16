@@ -30,6 +30,13 @@ namespace BakeryFinal.Controllers
 
         }
         [HttpGet]
+        [Route("orders/bakeryId")]
+        public List<Order> GetOrdersByBakeryId(int bakeryId)
+        {
+            return _order.PrepareAllOrdersByBakeryOffice(bakeryId);
+
+        }
+        [HttpGet]
         public List<Order> GetAll()
         {
             return _order.GetAll();

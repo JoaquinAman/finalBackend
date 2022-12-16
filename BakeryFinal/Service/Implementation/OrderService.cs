@@ -28,6 +28,11 @@ namespace BakeryFinal.Service.Implementation
             return _orderRepository.GetById(id);
         }
 
+        public List<Order> PrepareAllOrdersByBakeryOffice(int bakeryOfficeId)
+        {
+            return _orderRepository.PrepareAllOrdersByBakeryOffice(bakeryOfficeId);
+        }
+
         public OrderDTO Save(OrderDTO orderDTO)
         {
             return _orderRepository.Save(orderDTO);

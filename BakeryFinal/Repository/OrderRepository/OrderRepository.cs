@@ -20,6 +20,11 @@ namespace BakeryFinal.Repository.OrderRepository
             _context.SaveChanges();
         }
 
+        public List<Order> PrepareAllOrdersByBakeryOffice(int bakeryOfficeId)
+        {
+            return _context.Order.Where(x => x.BakeryOfficeId == bakeryOfficeId).ToList();
+        }
+
         public List<Order> GetAll()
         {
             return _context.Order.ToList();
@@ -45,7 +50,6 @@ namespace BakeryFinal.Repository.OrderRepository
             return data;
         }
 
-     
 
         private void SaveBreadOrder(int orderDbId, IEnumerable<BreadOrderDTO> orderDto)
         {

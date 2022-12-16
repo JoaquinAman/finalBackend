@@ -11,6 +11,8 @@ namespace BakeryFinal.Model.Domain
         [Required]
         public string Name { get; set; } = null!;
         [Required]
+        public int MaxCapacity { get; set; }
+        [Required]
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
     }

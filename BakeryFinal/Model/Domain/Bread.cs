@@ -12,7 +12,7 @@ namespace BakeryFinal.Model.Domain
         public string Name { get; set; } = string.Empty;
         [Required]
         public float Price { get; set; }
-
+        public BakeryOffice Bakery { get; set; } = null!;
         public virtual ICollection<BreadOrder> BreadOrder { get; set; } = null!;
 
     }

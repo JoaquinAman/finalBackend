@@ -33,6 +33,9 @@ namespace BakeryFinal.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("MaxCapacity")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -53,6 +56,9 @@ namespace BakeryFinal.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("BakeryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -61,6 +67,8 @@ namespace BakeryFinal.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BakeryId");
 
                     b.ToTable("Bread");
                 });
@@ -112,6 +120,17 @@ namespace BakeryFinal.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("BakeryFinal.Model.Domain.Bread", b =>
+                {
+                    b.HasOne("BakeryFinal.Model.Domain.BakeryOffice", "Bakery")
+                        .WithMany()
+                        .HasForeignKey("BakeryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Bakery");
                 });
 
             modelBuilder.Entity("BakeryFinal.Model.Domain.BreadOrder", b =>
