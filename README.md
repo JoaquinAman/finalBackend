@@ -1,3 +1,3 @@
 # finalBackend
 # required:
-In Database insert two offices (id = 1, and id = 2)
+In Database insert at least two offices (id = 1, id = 2)
