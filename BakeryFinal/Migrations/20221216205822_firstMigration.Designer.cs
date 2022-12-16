@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakeryFinal.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20221216041931_firstMigration")]
+    [Migration("20221216205822_firstMigration")]
     partial class firstMigration
     {
         /// <inheritdoc />

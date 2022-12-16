@@ -10,7 +10,7 @@ namespace BaskeryFinal.Front.printer
     {
         public int MyId { get; set; } = 4;
 
-        public void Execute(int bakeryId)
+        public async Task Execute(int bakeryId)
         {
             Environment.Exit(0);
         }

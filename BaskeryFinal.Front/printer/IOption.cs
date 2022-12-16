@@ -9,6 +9,6 @@ namespace BaskeryFinal.Front.printer
     public interface IOption
     {
         public int MyId { get; set; }
-        public void Execute(int bakeryId);
+        public Task Execute(int bakeryId);
     }
 }

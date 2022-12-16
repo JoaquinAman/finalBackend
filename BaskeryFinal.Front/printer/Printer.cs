@@ -8,7 +8,7 @@ namespace BaskeryFinal.Front.printer
 {
     public class Printer
     {
-        public List<IOption> OptionsList { get; set; } = new List<IOption>();
+         public List<IOption> OptionsList { get; set; } = new List<IOption>();
         public Printer()
         {
             IOption optionSelectOfficeMenu = new OptionSelectOfficeMenu();
@@ -24,15 +24,15 @@ namespace BaskeryFinal.Front.printer
             OptionsList.Add(optionPrepareAllOrders);
             OptionsList.Add(optionCloseApp);
         }
-
-        public void PrintCommand(int bakeryId, int option)
+        
+        public async Task PrintCommand(int bakeryId, int option)
         {
             //Console.WriteLine("recibo la option en printer: " + option);
             foreach (IOption optionInList in OptionsList)
             {
                 if (optionInList.MyId == option)
                 {
-                    optionInList.Execute(bakeryId);
+                    await optionInList.Execute(bakeryId);
                 }
             }
         }

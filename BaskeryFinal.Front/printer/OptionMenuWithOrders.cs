@@ -11,7 +11,7 @@ namespace BaskeryFinal.Front.printer
     {
         public int MyId { get; set; } = 3;
 
-        public void Execute(int bakeryId)
+        public async Task Execute(int bakeryId)
         {
             Console.WriteLine("----");
             Console.WriteLine("1. Add Order");
@@ -39,7 +39,7 @@ namespace BaskeryFinal.Front.printer
             {
                 selectedOption = 6;
             }
-            printer.PrintCommand(bakeryId, selectedOption);
+            await printer.PrintCommand(bakeryId, selectedOption);
         }
     }
 }

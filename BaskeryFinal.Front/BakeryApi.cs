@@ -13,6 +13,7 @@ namespace BaskeryFinal.Front
         public static async Task<List<T>> GetList<T>(string path)
         {
             List<T> offices = new();
+
             HttpResponseMessage response = await client.GetAsync(path);
 
             if (response.IsSuccessStatusCode)
@@ -25,6 +26,7 @@ namespace BaskeryFinal.Front
                 };
                 offices = JsonSerializer.Deserialize<List<T>>(result, options);
             }
+            
             return offices;
         }
 
@@ -35,6 +37,7 @@ namespace BaskeryFinal.Front
             StringContent httpContent = new(json, System.Text.Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = await client.PostAsync(path, httpContent);
+            
 
             if (response.IsSuccessStatusCode)
             {
@@ -48,6 +51,29 @@ namespace BaskeryFinal.Front
                 return entityCreated;
             }
             return entity;
+
+        }
+        public static async Task PrepareAllOrders(int bakeryId, string path)
+        {
+            //string json = JsonSerializer.Serialize(entity);
+
+            StringContent httpContent = new(bakeryId.ToString(), System.Text.Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await client.PutAsync(path, httpContent);
+
+
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    var result = await response.Content.ReadAsStringAsync();
+            //    //office = await response.Content.ReadAsAsync<Office>();
+            //    var options = new JsonSerializerOptions
+            //    {
+            //        PropertyNameCaseInsensitive = true
+            //    };
+            //    var entityCreated = JsonSerializer.Deserialize<T>(result, options);
+            //    return entityCreated;
+            //}
+            //return entity;
 
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BakeryFinal.Model.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -11,8 +12,9 @@ namespace BaskeryFinal.Front.printer
     {
         public int MyId { get; set; } = 1;
 
-        public void Execute(int bakeryId)
+        public async Task Execute(int bakeryId)
         {
+
             Console.WriteLine("----");
             Console.WriteLine("Bakery Fresh Bread");
             Console.WriteLine("------------------");
@@ -47,7 +49,7 @@ namespace BaskeryFinal.Front.printer
                 selectedOption = 2;
                 bakeryId = 2;
             }
-            printer.PrintCommand(bakeryId, selectedOption);
+            await printer.PrintCommand(bakeryId, selectedOption);
         }
     }
 }
